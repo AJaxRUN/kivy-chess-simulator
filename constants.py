@@ -13,3 +13,5 @@ class Board_Response(Enum):
 class Color(Enum):
 	white = 1
 	black = 2
+
+Keywords_For_Text_Splitting = ['to']

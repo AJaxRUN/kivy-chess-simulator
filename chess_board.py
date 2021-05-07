@@ -1,4 +1,4 @@
-from .constants import Board_Status, Color
+from .constants import Board_Status, Color, Board_Response, Keywords_For_Text_Splitting
 from .types import Coord
 from .coin import Coin
 
@@ -18,14 +18,22 @@ class Board:
 	def status_check(self) -> bool:
 		return self.status == Board_Status.active
 			
-	def move_coin(self, coin: Coin, target_pos: Coord):
+	def move_coin(self, coin: Coin, target_pos: Coord) -> str:
 		if self.status_check():
 			return self.status.name
-		path = coin.is_valid_move(target_pos):
-		if path is None:
-			return 'invalid_move'
-
+		is_valid_move = coin.is_valid_move(target_pos)
+		if not is_valid_move:
+			return Board_Response.invalid_move.name
 		#coin.isvalidmove
 		#pathcheck
 		#destinationcheck
 		pass
+
+	def split_input_str(self, input_coord: str) -> list[str]:
+		
+	
+	def main(self, input_coord: str) -> str:
+		if input_coord.strip() == '':
+			return Board_Response.invalid_move.name
+		
+		
